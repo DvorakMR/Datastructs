@@ -1,0 +1,92 @@
+/******************************************************************************
+** Lab 2: Autocomplete
+******************************************************************************/
+
+Group members:
+- [Andreas Åberg]
+- [Lukas Gunterberg-Klase]
+- [Alexander Hedén]
+
+/******************************************************************************
+** 1. Describe how your firstIndexOf() method in RangeBinarySearch.java
+**    finds the first index of a key that equals the search key.
+******************************************************************************/
+First we start by setting the boundery for right and left to be
+the first and last index of the elements in the array of terms.
+Then it finds the middle element of left and right and sets it to mid.
+We check if the term we search for is smaller, bigger or equal to mid
+If its smaller we remove all the larger elements and only check from
+left to the new right which is one element below mid. If its bigger 
+we do the opposite and set left to be mid+1. 
+A new mid is calculated and the same search is provided until right
+surpasses left. (or left surpasses right).
+Effectivly we half the array, and then half the half and so on until
+its found and we set mid to result or we return -1.
+
+
+/******************************************************************************
+** 2. State and justify the asymptotic complexity of the operations
+**    in the Autocomplete class in the dictionary size n.
+**    For all Matches and numberOfMatches, the asymptotic complexity
+**    should also depend on the matching terms m.
+**
+**    You may take the number of comparisons as a proxy for the runtime.
+******************************************************************************/
+
+sortDictionary: O(nlogn)
+
+Timsort has been the standard sorting algorithm since Python 2.3. 
+According to wikipedia this gives a worst-case of O(nlogn)
+
+numberOfMatches: O(logn)
+
+Binary search has a O(logn), making 2 calls to find first and last will give O(logn + logn) = O(logn)
+
+
+allMatches: O(logn + mlogm)
+
+This function requires first index and last index which we determined to be O(logn) before.
+We then have sort the values again using Python's timsort which has complexity O(nlogn),
+however this time we only sort for the elements between first and last element (m elements)
+which effectivly means O(logn + mlogm)
+
+/******************************************************************************
+** Appendix: General information
+**
+** A. Approximately how many hours did you spend on the assignment?
+******************************************************************************/
+
+[Andreas Åberg]: 5 hours
+[Lukas Gunterberg-Klase]: 5 hours
+[Alexander Hedén]: 5 hours 
+
+/******************************************************************************
+** B. Are there any known bugs / limitations?
+******************************************************************************/
+
+Why do we pass the prefix to allMatches when we call it after number of matches?
+If we save those variables we dont have to check again?
+
+/******************************************************************************
+** C. Did you collaborate with any other students on this lab?
+**    If so, please write in what way you collaborated and with whom.
+**    Also include any resources (including the web) that you may
+**    may have used in creating your design.
+******************************************************************************/
+
+https://en.wikipedia.org/wiki/Binary_search_algorithm
+
+https://en.wikipedia.org/wiki/Timsort
+
+/******************************************************************************
+** D. Describe any serious problems you encountered.                    
+******************************************************************************/
+Not really.
+
+/******************************************************************************
+** E. List any other comments here.
+**    Feel free to provide any feedback on how much you learned 
+**    from doing the assignment, and whether you enjoyed it.                                             
+******************************************************************************/
+We dont have much experience with this level of programming beforehand. 
+The labs are good but challenging and require a lot of time and thinking. 

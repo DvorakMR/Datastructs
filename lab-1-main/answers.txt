@@ -1,0 +1,116 @@
+/******************************************************************************
+** Lab 1: Sorting, Complexity
+******************************************************************************/
+
+Group members:
+- Alexander Hedén
+- Lukas Gunterberg-Klase
+- Andreas Åberg
+
+/******************************************************************************
+** Task: Figuring out the complexity
+**
+** 1. What is the complexity of running each of the following algorithms
+**    on each of the following kinds of inputs?
+******************************************************************************/
+
+insertion_sort on:
+
+- random inputs:      Quadratic 
+- 95% sorted inputs:  Quadratic
+- sorted inputs:      Linear
+
+quick_sort on:
+
+- random inputs:      Linearithmic
+- 95% sorted inputs:  Linearithmic
+- sorted inputs:      Quadratic
+
+merge_sort on:
+
+- random inputs:      Linearithmic
+- 95% sorted inputs:  Linearithmic
+- sorted inputs:      Linearithmic
+
+/******************************************************************************
+** Task: Improving quicksort
+**
+** 2. Do the following changes affect the complexity
+**    of quicksort on any of the three degrees of sortedness of the input?
+**    If so, what is it that changes?
+******************************************************************************/
+
+Shuffling the array first:
+[yes + sorted becomes Linearithmic because randomness] 
+
+Median-of-three pivot selection:
+[no]
+
+Insertion sort for small subarrays:
+[yes + for random and 95% we get quadratic instead of Linearithmic. For sorted 
+we get Linear instead of quadratic] 
+
+/******************************************************************************
+** 3. What is a good cutoff to use for insertion sort?
+**    Explain briefly how you came to this answer.
+**    Remember that you should try to find the answer in a systematic way.
+******************************************************************************/
+
+[for sorted always use insertion sort instead of quick sort.
+For random the cutoff value will be the point where Insertion Sort Random is faster than Quicksort Random
+This value seems to be around 50-70 for our test CPU if you compare the values between the tables.]
+
+/******************************************************************************
+** 4. Which combination of improvements gives the best performance?
+******************************************************************************/
+
+[quick_sort with median of three and a cutoff to insertion_sort at 50-70]
+
+/******************************************************************************
+** Appendix: General information
+**
+** A. Approximately how many hours did you spend on the assignment?
+******************************************************************************/
+
+[Alexander Hedén]:  [3 hours]
+[Lukas Gunterberg-Klase]:  [3 hours]
+[Andreas Åberg]:  [3 hours]
+
+
+/******************************************************************************
+** B. Are there any known bugs / limitations?
+******************************************************************************/
+
+[Limitations: The performance varies a lot depending on workload, type of CPU etc. 
+Python runs in single thread and could probably benefit from multithreaded operation (however that works?).
+cutoff value is hard to determine due to random data not being static.]
+
+/******************************************************************************
+** C. Did you collaborate with any other students on this lab?
+**    If so, please write in what way you collaborated and with whom.
+**    Also include any resources (including the web) that you may
+**    may have used in creating your design.
+******************************************************************************/
+
+[No]
+
+/******************************************************************************
+** D. Describe any serious problems you encountered.                    
+******************************************************************************/
+
+[No]
+
+/******************************************************************************
+** E. List any other comments here.
+**    Feel free to provide any feedback on how much you learned 
+**    from doing the assignment, and whether you enjoyed it.                                             
+******************************************************************************/
+
+[It was a good introduction to time complexity of sorting algorithms. 
+It would have been nice to get the table output formated in a better way,
+to simplify the ploting of the data.
+It would be prefferable to have some more details in some of the questions 
+regarding what kind of lists you should focus on:
+"3. What is a good cutoff to use for insertion sort?"
+"4. Which combination of improvements gives the best performance?"
+Well that depends on what type of data you want to improve]
